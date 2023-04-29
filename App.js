@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import Registration from "./Screens/RegistrationScreen";
-import Login from "./Screens/LoginScreen";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { useRoute } from "./router";
 
 import {
   useFonts,
@@ -9,6 +9,7 @@ import {
 } from "@expo-google-fonts/roboto";
 
 export default function App() {
+  const routing = useRoute();
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_500Medium,
@@ -17,5 +18,5 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  return <Login />;
+  return <NavigationContainer>{routing}</NavigationContainer>;
 }

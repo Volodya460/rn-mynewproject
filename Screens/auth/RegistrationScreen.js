@@ -21,7 +21,7 @@ const initialState = {
   email: "",
   password: "",
 };
-export default function Registration() {
+export default function Registration({ navigation }) {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setState] = useState(initialState);
   const [dimensions, setdimensions] = useState(Dimensions.get("window").height);
@@ -142,7 +142,9 @@ export default function Registration() {
                     <TouchableOpacity
                       activeOpacity={0.8}
                       style={styles.btn}
-                      onPress={handleSubmit}
+                      onPress={() => {
+                        handleSubmit(), navigation.navigate("Home");
+                      }}
                     >
                       <Text style={styles.btnTitle}>Зарегистрироваться</Text>
                     </TouchableOpacity>
@@ -151,7 +153,13 @@ export default function Registration() {
                       style={styles.btnJoin}
                     >
                       <Text style={styles.btnJoinTitle}>
-                        Уже есть аккаунт? Войти
+                        Уже есть аккаунт?
+                        <Text
+                          style={styles.btnJoinTitle}
+                          onPress={() => navigation.navigate("Login")}
+                        >
+                          Войти
+                        </Text>
                       </Text>
                     </TouchableOpacity>
                   </>

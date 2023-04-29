@@ -33,10 +33,10 @@ export const styles = StyleSheet.create({
     // paddingBottom: 133,
     ...Platform.select({
       ios: {
-        paddingBottom: 133,
+        paddingBottom: 0,
       },
       android: {
-        paddingBottom: 133,
+        // paddingBottom: 133,
         paddingTop: 32,
       },
     }),

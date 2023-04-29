@@ -20,7 +20,7 @@ const initialState = {
   password: "",
 };
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setState] = useState(initialState);
   const [dimensions, setdimensions] = useState(Dimensions.get("window").height);
@@ -122,7 +122,9 @@ export default function Login() {
                     <TouchableOpacity
                       activeOpacity={0.8}
                       style={styles.btn}
-                      onPress={handleSubmit}
+                      onPress={() => {
+                        handleSubmit(), navigation.navigate("Home");
+                      }}
                     >
                       <Text style={styles.btnTitle}>Войти</Text>
                     </TouchableOpacity>
@@ -131,7 +133,13 @@ export default function Login() {
                       style={styles.btnJoin}
                     >
                       <Text style={styles.btnJoinTitle}>
-                        Нет аккаунта? Зарегистрироваться
+                        Нет аккаунта?
+                        <Text
+                          style={styles.btnJoinTitle}
+                          onPress={() => navigation.navigate("Registration")}
+                        >
+                          Зарегистрироваться
+                        </Text>
                       </Text>
                     </TouchableOpacity>
                   </>
