@@ -9,7 +9,7 @@ import {
 } from "@expo-google-fonts/roboto";
 
 export default function App() {
-  const routing = useRoute();
+  const routing = useRoute(false);
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_500Medium,

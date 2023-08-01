@@ -27,34 +27,21 @@ export const styles = StyleSheet.create({
   },
   bgrView: {
     justifyContent: "center",
-    width: "100%",
-    height: 550,
+    justifyContent: "flex-end",
+    width: 410,
+    height: 530,
+    paddingBottom: 45,
     backgroundColor: "#fff",
 
-    // left: 0,
-    // top: 150,
-    // paddingLeft: 16,
-    // paddingRight: 16,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-
-    // // ...Platform.select({
-    // //   ios: {
-    // //     height: 580,
-    // //   },
-    // //   android: {
-    // //     height: 580,
-    // //   },
-    // }),
-
-    // position: "relative",
   },
   registrationText: {
     // fontWeight: 500,
     fontSize: 30,
     lineHeight: 35,
     color: "#212121",
-    marginTop: 92,
+    marginTop: 32,
     textAlign: "center",
     marginBottom: 16,
     fontFamily: "Roboto_500Medium",

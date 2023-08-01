@@ -14,44 +14,45 @@ const Stack = createNativeStackNavigator();
 const MainTab = createBottomTabNavigator();
 
 export const useRoute = (isAuth) => {
-  if (!isAuth) {
-    return (
-      <Stack.Navigator initialRouteName="Registration">
-        <Stack.Screen
-          name="Registration"
-          component={Registration}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    );
-  }
+  // if (!isAuth) {
   return (
-    <MainTab.Navigator>
-      <MainTab.Screen
-        name="PostsScreen"
-        component={PostsScreen}
-        options={{ title: "Публикации" }}
-      />
-      <MainTab.Screen
-        name="CreatePostsScreen"
-        component={CreatePostsScreen}
-        options={{ title: "Создать публикацию" }}
-      />
-      <MainTab.Screen
-        name="ProfileScreen"
-        component={ProfileScreen}
+    <Stack.Navigator initialRouteName="Registration">
+      <Stack.Screen
+        name="Registration"
+        component={Registration}
         options={{ headerShown: false }}
       />
-    </MainTab.Navigator>
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
   );
+  // }
+  // return (
+  // <Home />
+  // <MainTab.Navigator>
+  //   <MainTab.Screen
+  //     name="PostsScreen"
+  //     component={PostsScreen}
+  //     options={{ title: "Публикации" }}
+  //   />
+  //   <MainTab.Screen
+  //     name="CreatePostsScreen"
+  //     component={CreatePostsScreen}
+  //     options={{ title: "Создать публикацию" }}
+  //   />
+  //   <MainTab.Screen
+  //     name="ProfileScreen"
+  //     component={ProfileScreen}
+  //     options={{ headerShown: false }}
+  //   />
+  // </MainTab.Navigator>
+  // );
 };

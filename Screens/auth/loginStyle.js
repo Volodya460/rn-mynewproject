@@ -33,10 +33,10 @@ export const styles = StyleSheet.create({
     // paddingBottom: 133,
     ...Platform.select({
       ios: {
-        paddingBottom: 0,
+        // paddingBottom: 0,
       },
       android: {
-        // paddingBottom: 133,
+        paddingBottom: 80,
         paddingTop: 32,
       },
     }),
@@ -54,7 +54,7 @@ export const styles = StyleSheet.create({
   },
   loginText: {
     fontFamily: "Roboto_500Medium",
-    fontWeight: 500,
+
     fontSize: 30,
     lineHeight: 35,
     color: "#212121",

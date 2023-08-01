@@ -62,113 +62,109 @@ export default function Registration({ navigation }) {
   const handleSubmit = () => {
     console.log(state);
   };
-  console.log(dimensions < 450);
 
   return (
     <TouchableWithoutFeedback onPress={keyBoardHide}>
-      <View style={styles.container}>
-        <ImageBackground
-          source={require("../images/photoBG.jpg")}
-          style={styles.image}
+      <ImageBackground
+        source={require("../images/photoBG.jpg")}
+        style={styles.image}
+      >
+        <KeyboardAvoidingView
+        // behavior={Platform.OS === "ios" ? "padding" : "height"}
+        // style={{
+        //   ...styles.bgrView,
+        // }}
         >
-          <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={styles.bgrView}
+          <View
+            style={{
+              ...styles.bgrView,
+              height: isShowKeyboard ? 400 : 530,
+              // marginBottom: isShowKeyboard && dimensions > 450 ? 150 : 100,
+              paddingBottom: isShowKeyboard && dimensions < 450 ? 20 : 45,
+            }}
           >
-            <View
-              style={{
-                ...styles.bgrView,
-                height: isShowKeyboard ? 300 : 580,
-                marginBottom: isShowKeyboard && dimensions > 450 ? 150 : 0,
-                paddingBottom: isShowKeyboard && dimensions < 450 ? 20 : 0,
-              }}
-            >
-              <View style={styles.avatar}>
-                <Image style={styles.avatarIcon} />
-              </View>
-              <Text style={styles.registrationText}>Регистрация</Text>
+            <View style={styles.avatar}>
+              <Image style={styles.avatarIcon} />
+            </View>
+            <Text style={styles.registrationText}>Регистрация</Text>
+            <View>
               <View>
-                <View>
-                  <TextInput
-                    value={state.login}
-                    style={styles.input}
-                    placeholder="Логин"
-                    placeholderTextColor="#BDBDBD"
-                    onFocus={() => {
-                      setIsShowKeyboard(true);
-                    }}
-                    onChangeText={(value) =>
-                      setState((prev) => ({ ...prev, login: value }))
-                    }
-                  ></TextInput>
-                </View>
-                <View>
-                  <TextInput
-                    value={state.email}
-                    style={styles.input}
-                    placeholder="Адрес электронной почты"
-                    placeholderTextColor="#BDBDBD"
-                    onFocus={() => {
-                      setIsShowKeyboard(true);
-                    }}
-                    onChangeText={(value) =>
-                      setState((prev) => ({ ...prev, email: value }))
-                    }
-                  ></TextInput>
-                </View>
-                <View>
-                  <TextInput
-                    value={state.password}
-                    style={styles.input}
-                    placeholder="Пароль"
-                    placeholderTextColor="#BDBDBD"
-                    secureTextEntry={true}
-                    onFocus={() => {
-                      setIsShowKeyboard(true);
-                    }}
-                    onChangeText={(value) =>
-                      setState((prev) => ({ ...prev, password: value }))
-                    }
-                  ></TextInput>
+                <TextInput
+                  value={state.login}
+                  style={styles.input}
+                  placeholder="Логин"
+                  placeholderTextColor="#BDBDBD"
+                  onFocus={() => {
+                    setIsShowKeyboard(true);
+                  }}
+                  onChangeText={(value) =>
+                    setState((prev) => ({ ...prev, login: value }))
+                  }
+                ></TextInput>
+              </View>
+              <View>
+                <TextInput
+                  value={state.email}
+                  style={styles.input}
+                  placeholder="Адрес электронной почты"
+                  placeholderTextColor="#BDBDBD"
+                  onFocus={() => {
+                    setIsShowKeyboard(true);
+                  }}
+                  onChangeText={(value) =>
+                    setState((prev) => ({ ...prev, email: value }))
+                  }
+                ></TextInput>
+              </View>
+              <View>
+                <TextInput
+                  value={state.password}
+                  style={styles.input}
+                  placeholder="Пароль"
+                  placeholderTextColor="#BDBDBD"
+                  secureTextEntry={true}
+                  onFocus={() => {
+                    setIsShowKeyboard(true);
+                  }}
+                  onChangeText={(value) =>
+                    setState((prev) => ({ ...prev, password: value }))
+                  }
+                ></TextInput>
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  style={styles.passShowBtn}
+                >
+                  <Text style={styles.showBtn}>Показать</Text>
+                </TouchableOpacity>
+              </View>
+              {!isShowKeyboard && (
+                <>
                   <TouchableOpacity
                     activeOpacity={0.8}
-                    style={styles.passShowBtn}
+                    style={styles.btn}
+                    onPress={() => {
+                      handleSubmit(), navigation.navigate("Home");
+                    }}
                   >
-                    <Text style={styles.showBtn}>Показать</Text>
+                    <Text style={styles.btnTitle}>Зарегистрироваться</Text>
                   </TouchableOpacity>
-                </View>
-                {!isShowKeyboard && (
-                  <>
-                    <TouchableOpacity
-                      activeOpacity={0.8}
-                      style={styles.btn}
-                      onPress={() => {
-                        handleSubmit(), navigation.navigate("Home");
-                      }}
-                    >
-                      <Text style={styles.btnTitle}>Зарегистрироваться</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      activeOpacity={0.8}
-                      style={styles.btnJoin}
-                    >
-                      <Text style={styles.btnJoinTitle}>
-                        Уже есть аккаунт?
-                        <Text
-                          style={styles.btnJoinTitle}
-                          onPress={() => navigation.navigate("Login")}
-                        >
-                          Войти
-                        </Text>
+                  <TouchableOpacity activeOpacity={0.8} style={styles.btnJoin}>
+                    <Text style={styles.btnJoinTitle}>
+                      Уже есть аккаунт?
+                      <Text
+                        style={styles.btnJoinTitle}
+                        onPress={() => navigation.navigate("Login")}
+                      >
+                        Войти
                       </Text>
-                    </TouchableOpacity>
-                  </>
-                )}
-              </View>
+                    </Text>
+                  </TouchableOpacity>
+                </>
+              )}
             </View>
-          </KeyboardAvoidingView>
-        </ImageBackground>
-      </View>
+          </View>
+        </KeyboardAvoidingView>
+      </ImageBackground>
     </TouchableWithoutFeedback>
   );
 }
