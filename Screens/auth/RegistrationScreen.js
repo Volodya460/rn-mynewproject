@@ -24,6 +24,7 @@ const initialState = {
 export default function Registration({ navigation }) {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setState] = useState(initialState);
+  const [passShowBtn, setPassShowBtn] = useState(true);
   const [dimensions, setdimensions] = useState(Dimensions.get("window").height);
 
   useEffect(() => {
@@ -62,6 +63,9 @@ export default function Registration({ navigation }) {
   const handleSubmit = () => {
     console.log(state);
   };
+  const showPassword = () => {
+    setPassShowBtn((prev) => !prev);
+  };
 
   return (
     <TouchableWithoutFeedback onPress={keyBoardHide}>
@@ -92,7 +96,7 @@ export default function Registration({ navigation }) {
                 <TextInput
                   value={state.login}
                   style={styles.input}
-                  placeholder="Логин"
+                  placeholder="Логін"
                   placeholderTextColor="#BDBDBD"
                   onFocus={() => {
                     setIsShowKeyboard(true);
@@ -106,7 +110,7 @@ export default function Registration({ navigation }) {
                 <TextInput
                   value={state.email}
                   style={styles.input}
-                  placeholder="Адрес электронной почты"
+                  placeholder="Адреса електронної пошти"
                   placeholderTextColor="#BDBDBD"
                   onFocus={() => {
                     setIsShowKeyboard(true);
@@ -122,7 +126,7 @@ export default function Registration({ navigation }) {
                   style={styles.input}
                   placeholder="Пароль"
                   placeholderTextColor="#BDBDBD"
-                  secureTextEntry={true}
+                  secureTextEntry={passShowBtn}
                   onFocus={() => {
                     setIsShowKeyboard(true);
                   }}
@@ -133,8 +137,9 @@ export default function Registration({ navigation }) {
                 <TouchableOpacity
                   activeOpacity={0.8}
                   style={styles.passShowBtn}
+                  onPress={showPassword}
                 >
-                  <Text style={styles.showBtn}>Показать</Text>
+                  <Text style={styles.showBtn}>Показати</Text>
                 </TouchableOpacity>
               </View>
               {!isShowKeyboard && (
@@ -146,16 +151,16 @@ export default function Registration({ navigation }) {
                       handleSubmit(), navigation.navigate("Home");
                     }}
                   >
-                    <Text style={styles.btnTitle}>Зарегистрироваться</Text>
+                    <Text style={styles.btnTitle}>Зареєстуватися</Text>
                   </TouchableOpacity>
                   <TouchableOpacity activeOpacity={0.8} style={styles.btnJoin}>
                     <Text style={styles.btnJoinTitle}>
-                      Уже есть аккаунт?
+                      Вже є акаунт?
                       <Text
                         style={styles.btnJoinTitle}
                         onPress={() => navigation.navigate("Login")}
                       >
-                        Войти
+                        Увійти
                       </Text>
                     </Text>
                   </TouchableOpacity>

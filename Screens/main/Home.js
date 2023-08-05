@@ -6,9 +6,11 @@ import PostsScreen from "./PostsScreen";
 import CreatePostsScreen from "./CreatePostsScreen";
 import ProfileScreen from "./ProfileScreen";
 import { AntDesign } from "@expo/vector-icons";
+
 import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import { View } from "react-native";
 
 const MainTab = createBottomTabNavigator();
 
@@ -26,7 +28,7 @@ const Home = ({ navigation }) => {
         name="PostsScreen"
         component={PostsScreen}
         options={{
-          title: "Публикации",
+          title: "Публікації",
           headerTitleAlign: "center",
           tabBarIcon: ({ focused, color, size }) => (
             <AntDesign name="appstore-o" size={30} color={color} />
@@ -48,22 +50,29 @@ const Home = ({ navigation }) => {
         name="CreatePostsScreen"
         component={CreatePostsScreen}
         options={{
-          title: "Создать публикацию",
+          borderRadius: 60,
+          title: "Створити публікацію",
           headerTitleAlign: "center",
           tabBarIcon: ({ focused, color, size }) => (
-            <Entypo
+            <View
               style={{
-                borderRadius: 60,
-                width: 75,
-                height: 45,
+                display: "flex",
+                alignItems: "center",
+                width: 70,
+                height: 40,
                 backgroundColor: "#FF6C00",
-                paddingLeft: 19,
-                paddingTop: 4,
+                borderRadius: 20,
               }}
-              name="plus"
-              size={35}
-              color={"#FFFFFF"}
-            />
+            >
+              <AntDesign
+                name="plus"
+                size={24}
+                color="#FFFFFF"
+                style={{
+                  marginTop: 7,
+                }}
+              />
+            </View>
           ),
           headerLeft: (props) => (
             <HeaderBackButton

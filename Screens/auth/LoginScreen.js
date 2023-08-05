@@ -86,7 +86,7 @@ export default function Login({ navigation }) {
                   <TextInput
                     value={state.email}
                     style={styles.input}
-                    placeholder="Адрес электронной почты"
+                    placeholder="Адреса електронної пошти"
                     placeholderTextColor="#BDBDBD"
                     onFocus={() => {
                       setIsShowKeyboard(true);
@@ -133,12 +133,12 @@ export default function Login({ navigation }) {
                       style={styles.btnJoin}
                     >
                       <Text style={styles.btnJoinTitle}>
-                        Нет аккаунта?
+                        Немає акаунту?
                         <Text
                           style={styles.btnJoinTitle}
                           onPress={() => navigation.navigate("Registration")}
                         >
-                          Зарегистрироваться
+                          Зареєстуватися
                         </Text>
                       </Text>
                     </TouchableOpacity>
