@@ -11,10 +11,13 @@ import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { View } from "react-native";
+import { signOutUser } from "../../redux/auth/authOperations";
+import { useDispatch } from "react-redux";
 
 const MainTab = createBottomTabNavigator();
 
 const Home = ({ navigation }) => {
+  const dispatch = useDispatch();
   return (
     <MainTab.Navigator
       screenOptions={{

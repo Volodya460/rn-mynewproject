@@ -1,6 +1,9 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import { PersistGate } from "redux-persist/integration/react";
 import { useRoute } from "./router";
+import { Provider } from "react-redux";
+import { store, persistor } from "./redux/store";
 
 import {
   useFonts,
@@ -18,5 +21,11 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-  return <NavigationContainer>{routing}</NavigationContainer>;
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <NavigationContainer>{routing}</NavigationContainer>
+      </PersistGate>
+    </Provider>
+  );
 }

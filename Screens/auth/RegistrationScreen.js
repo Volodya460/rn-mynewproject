@@ -13,6 +13,8 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+import { useDispatch } from "react-redux";
+import { signupUser } from "../../redux/auth/authOperations";
 import { Dimensions } from "react-native";
 import { styles } from "./registrationStyle";
 
@@ -26,6 +28,8 @@ export default function Registration({ navigation }) {
   const [state, setState] = useState(initialState);
   const [passShowBtn, setPassShowBtn] = useState(true);
   const [dimensions, setdimensions] = useState(Dimensions.get("window").height);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const onChange = () => {
@@ -62,6 +66,7 @@ export default function Registration({ navigation }) {
 
   const handleSubmit = () => {
     console.log(state);
+    dispatch(signupUser({ ...state }));
   };
   const showPassword = () => {
     setPassShowBtn((prev) => !prev);
@@ -74,10 +79,10 @@ export default function Registration({ navigation }) {
         style={styles.image}
       >
         <KeyboardAvoidingView
-        // behavior={Platform.OS === "ios" ? "padding" : "height"}
-        // style={{
-        //   ...styles.bgrView,
-        // }}
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          // style={{
+          //   ...styles.bgrView,
+          // }}
         >
           <View
             style={{
